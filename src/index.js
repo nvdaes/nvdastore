@@ -1,17 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from "react-dom";
+import useFetch from "./useFetch";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+function Home(props) {
+	const data = useFetch(`${props.url}`)	;
+	// const [data] = useFetch("https://www.nvaccess.org/addonStore/en/all/2021.2.0.json");
+	// const data = useFetch ("https://jsonplaceholder.typicode.com/todos/1");
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+	return (
+		<>
+			{data &&
+			data.map((item, index) => {
+				return <p key={index}>{item.displayName}</p>;
+			})}
+		</>
+	);
+};
+
+ReactDOM.render(<Home url="https://www.nvaccess.org/addonStore/en/all/2021.2.0.json" />, document.getElementById("root"));
