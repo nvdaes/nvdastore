@@ -2,7 +2,6 @@ import ReactDOM from "react-dom";
 import useFetch from "./useFetch";
 import { useState } from "react";
 
-
 const Home = () => {
   // const [url, setUrl] = useState(`https://jsonplaceholder.typicode.com/${subfix}`);
   const [url, setUrl] = useState("https://raw.githubusercontent.com/nvdaes/nvdastore/master/src/all2021.2.0.json");
@@ -13,16 +12,17 @@ const Home = () => {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
-    setUrl(`https://raw.githubusercontent.com/nvdaes/nvdastore/master/src/${channel}2021.2.0.json`);
+		    setUrl(`https://raw.githubusercontent.com/nvdaes/nvdastore/master/src/${channel}2021.2.0.json`);
   if (channel === "stable") {
 	  setHeaderSubfix("stable");
-    } else {
+	  return;
+  }
 		if (channel === "beta") {
 			setHeaderSubfix("beta");
-			} else {
+			return;
+		}
 				setHeaderSubfix("all");
-			}
-	};
+			
   }
 
   const [data] = useFetch([url]);
@@ -43,7 +43,20 @@ const Home = () => {
         <h1 aria-live="polite" aria-atomic="true">Available add-ons: {headerSubfix}</h1>
         {data &&
         data.map((item, index) => {
-          return <h2 key={index}>{item.displayName} {item.versionName}</h2>;
+          return (
+		  <>
+		  <h2 key={index}>{item.displayName} {item.versionName}</h2>
+		  <p>{item.description}</p>
+		  <ul>
+		  <li>ID: {item.addonId}</li>
+		<li>channel: {item.channel}</li>
+		<li>publisher: @{item.publisher}</li>
+		<li>SHA-256: {item.sha256}</li>
+		<li>homepage: {item.homepage}</li>
+		<li>source URL: {item.sourceURL}</li>
+		</ul>
+		</>
+		)
         })}
     </>
   );
