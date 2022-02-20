@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom";
 import useFetch from "./useFetch";
 import { useState } from "react";
+import Footer from "./footer";
 
 const Home = () => {
   // const [url, setUrl] = useState(`https://jsonplaceholder.typicode.com/${subfix}`);
@@ -28,6 +29,8 @@ const Home = () => {
   const [data] = useFetch([url]);
   return (
     <>
+	<header>
+	<p>Addons available on the <a href="https://github.com/nvaccess/addon-datastore"target="_blank" rel="noopener noreferrer">NV Access add-on datastore repository</a> (external)</p>
       <form onSubmit={handleSubmit}>
         <label>Select release channel
           <select
@@ -40,24 +43,29 @@ const Home = () => {
         </label>
           <input type="submit" />
       </form>
+	  </header>
+	  <main>
         <h1 aria-live="polite" aria-atomic="true">Available add-ons: {headerSubfix}</h1>
         {data &&
         data.map((item, index) => {
           return (
 		  <>
-		  <h2 key={index}>{item.displayName} {item.versionName}</h2>
+		  <h2 key={index}><a download href={item.URL}>{item.displayName} {item.addonVersionName}</a></h2>
 		  <p>{item.description}</p>
 		  <ul>
 		  <li>ID: {item.addonId}</li>
+		  <li>version: {item.addonVersionName}</li>
 		<li>channel: {item.channel}</li>
 		<li>publisher: @{item.publisher}</li>
 		<li>SHA-256: {item.sha256}</li>
-		<li>homepage: {item.homepage}</li>
-		<li>source URL: {item.sourceURL}</li>
+		<li><a href={item.homepage} target="_blank" rel="noopener noreferrer">{item.addonId} homepage</a> (external)</li>
+		<li><a href={item.sourceURL} target="_blank" rel="noopener noreferrer">{item.addonId} source code</a> (external)</li>
 		</ul>
-		</>
-		)
+				</>
+					)
         })}
+		</main>
+		<Footer />
     </>
   );
 };
