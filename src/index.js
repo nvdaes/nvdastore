@@ -1,13 +1,14 @@
 import ReactDOM from "react-dom";
 import useFetch from "./useFetch";
 import { useState } from "react";
+import Sha256Form from "./sha256Form";
 import Footer from "./footer";
 
 const Home = () => {
   // const [url, setUrl] = useState(`https://jsonplaceholder.typicode.com/${subfix}`);
   const [url, setUrl] = useState("https://raw.githubusercontent.com/nvdaes/nvdastore/master/src/all2021.2.0.json");
   const [channel, setChannel] = useState("all");
-  const [headerSubfix, setHeaderSubfix]= useState("all");
+  const [headerSubfix, setHeaderSubfix] = useState("all");
   const handleChannelChange = (event) => {
     setChannel(event.target.value);
   }
@@ -41,7 +42,7 @@ const Home = () => {
             <option value="beta">Beta</option>
           </select>
         </label>
-          <input type="submit" />
+          <input type="submit" value="Set options" />
       </form>
 	  </header>
 	  <main>
@@ -50,9 +51,9 @@ const Home = () => {
         data.map((item, index) => {
           return (
 		  <>
-		  <h2 key={index}><a download href={item.URL}>{item.displayName} {item.addonVersionName}</a></h2>
+		  <h2 key={index}><a href={item.URL}>{item.displayName} {item.addonVersionName}</a></h2>
 		  <p>{item.description}</p>
-		  <ul>
+		  		  <ul>
 		  <li>ID: {item.addonId}</li>
 		  <li>version: {item.addonVersionName}</li>
 		<li>channel: {item.channel}</li>
@@ -61,10 +62,13 @@ const Home = () => {
 		<li><a href={item.homepage} target="_blank" rel="noopener noreferrer">{item.addonId} homepage</a> (external)</li>
 		<li><a href={item.sourceURL} target="_blank" rel="noopener noreferrer">{item.addonId} source code</a> (external)</li>
 		</ul>
-				</>
+						</>
 					)
         })}
 		</main>
+		<aside>
+				<Sha256Form />
+				</aside>
 		<Footer />
     </>
   );
