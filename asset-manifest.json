@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/nvdastore/static/js/main.511cbc6f.js",
+    "main.js": "/nvdastore/static/js/main.eab1fe1e.js",
     "index.html": "/nvdastore/index.html",
-    "main.511cbc6f.js.map": "/nvdastore/static/js/main.511cbc6f.js.map"
+    "main.eab1fe1e.js.map": "/nvdastore/static/js/main.eab1fe1e.js.map"
   },
   "entrypoints": [
-    "static/js/main.511cbc6f.js"
+    "static/js/main.eab1fe1e.js"
   ]
 }
