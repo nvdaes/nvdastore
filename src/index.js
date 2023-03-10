@@ -6,7 +6,8 @@ import Footer from "./footer";
 
 const Home = () => {
   // const [url, setUrl] = useState(`https://jsonplaceholder.typicode.com/${subfix}`);
-  const [url, setUrl] = useState("https://www.nvaccess.org/addonStore/en/all/2022.2.0.json");
+  const apiVer = "2023.1.0"
+  const [url, setUrl] = useState(`https://www.nvaccess.org/addonStore/en/all/${apiVer}.json`);
   const [channel, setChannel] = useState("all");
   const [headerSubfix, setHeaderSubfix] = useState("all");
   const handleChannelChange = (event) => {
@@ -14,13 +15,17 @@ const Home = () => {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
-		    setUrl(`https://www.nvaccess.org/addonStore/en/${channel}/2022.2.0.json`);
+		    setUrl(`https://www.nvaccess.org/addonStore/en/${channel}/${apiVer}.json`);
   if (channel === "stable") {
 	  setHeaderSubfix("stable");
 	  return;
   }
 		if (channel === "beta") {
 			setHeaderSubfix("beta");
+			return;
+		}
+		if (channel === "dev") {
+			setHeaderSubfix("dev");
 			return;
 		}
 				setHeaderSubfix("all");
@@ -40,6 +45,7 @@ const Home = () => {
             <option value="all">All</option>
             <option value="stable">Stable</option>
             <option value="beta">Beta</option>
+            <option value="dev">Beta</option>
           </select>
         </label>
           <input type="submit" value="Set options" />
