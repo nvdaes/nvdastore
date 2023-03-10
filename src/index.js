@@ -45,7 +45,7 @@ const Home = () => {
             <option value="all">All</option>
             <option value="stable">Stable</option>
             <option value="beta">Beta</option>
-            <option value="dev">Beta</option>
+            <option value="dev">Dev</option>
           </select>
         </label>
           <input type="submit" value="Set options" />
