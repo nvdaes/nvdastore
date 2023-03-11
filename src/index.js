@@ -37,6 +37,7 @@ const Home = () => {
     <>
 	<header>
 	<p>Addons available on the <a href="https://github.com/nvaccess/addon-datastore"target="_blank" rel="noopener noreferrer">NV Access add-on datastore repository</a> (external)</p>
+  <p>API version: {apiVer}</p>
       <form onSubmit={handleSubmit}>
         <label>Select release channel
           <select
