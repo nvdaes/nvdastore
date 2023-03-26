@@ -6,7 +6,7 @@ import Footer from "./footer";
 
 const Home = () => {
   // const [url, setUrl] = useState(`https://jsonplaceholder.typicode.com/${subfix}`);
-  const apiVer = "2023.1.0"
+  const apiVer = "latest"
   const [url, setUrl] = useState(`https://www.nvaccess.org/addonStore/en/all/${apiVer}.json`);
   const [channel, setChannel] = useState("all");
   const [headerSubfix, setHeaderSubfix] = useState("all");
