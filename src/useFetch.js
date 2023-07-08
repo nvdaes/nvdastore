@@ -15,7 +15,7 @@ const useFetch = (url) => {
 		referrerPolicy: 'no-referrer',
 		})
       .then((res) => res.json())
-      .then((data) => setData(data));
+      .then((data) => setData(data.filter((item => item.legacy === undefined))));
   }, [url]);
 
   return [data];

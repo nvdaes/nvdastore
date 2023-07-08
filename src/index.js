@@ -71,6 +71,7 @@ const Home = () => {
 		</ul>
 						</>
 					)
+			
         })}
 		</main>
 		<aside>
