@@ -6,30 +6,22 @@ import Footer from "./footer";
 
 const Home = () => {
   // const [url, setUrl] = useState(`https://jsonplaceholder.typicode.com/${subfix}`);
-  const apiVer = "latest"
-  const [url, setUrl] = useState(`https://www.nvaccess.org/addonStore/en/all/${apiVer}.json`);
-  const [channel, setChannel] = useState("all");
-  const [headerSubfix, setHeaderSubfix] = useState("all");
+  const [lang, setLang] = useState("en");
+    const [channel, setChannel] = useState("all");
+	  const [apiVer, setApiVer] = useState("latest");
+  const [url, setUrl] = useState(`https://www.nvaccess.org/addonStore/${lang}/${channel}/${apiVer}.json`);
+  const handleLangChange = (event) => {
+    setLang(event.target.value);
+  }
   const handleChannelChange = (event) => {
     setChannel(event.target.value);
   }
+    const handleApiVerChange = (event) => {
+    setApiVer(event.target.value);
+  }
   const handleSubmit = (event) => {
     event.preventDefault();
-		    setUrl(`https://www.nvaccess.org/addonStore/en/${channel}/${apiVer}.json`);
-  if (channel === "stable") {
-	  setHeaderSubfix("stable");
-	  return;
-  }
-		if (channel === "beta") {
-			setHeaderSubfix("beta");
-			return;
-		}
-		if (channel === "dev") {
-			setHeaderSubfix("dev");
-			return;
-		}
-				setHeaderSubfix("all");
-			
+		    setUrl(`https://www.nvaccess.org/addonStore/${lang}/${channel}/${apiVer}.json`);
   }
 
   const [data] = useFetch([url]);
@@ -37,8 +29,13 @@ const Home = () => {
     <>
 	<header>
 	<p>Addons available on the <a href="https://github.com/nvaccess/addon-datastore"target="_blank" rel="noopener noreferrer">NV Access add-on datastore repository</a> (external)</p>
-  <p>API version: {apiVer}</p>
       <form onSubmit={handleSubmit}>
+	  <label>Language
+	  <input type="text" defaultValue={lang} onChange={handleLangChange} />
+	  </label>
+	  	  <label>API version
+	  <input type="text" defaultValue={apiVer} onChange={handleApiVerChange} />
+	  </label>
         <label>Select release channel
           <select
           value={channel}
@@ -53,7 +50,7 @@ const Home = () => {
       </form>
 	  </header>
 	  <main>
-        <h1 aria-live="polite" aria-atomic="true">Available add-ons: {headerSubfix}</h1>
+        <h1 aria-live="polite" aria-atomic="true">Available add-ons: {url}</h1>
         {data &&
         data.map((item, index) => {
           return (
