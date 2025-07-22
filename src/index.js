@@ -25,7 +25,7 @@ const Home = () => {
   }
 
   const [data] = useFetch([url]);
-  const sortedData = [...data].sort((a, b) => a.displayName - b.displayName);
+  const sortedData = [...data].sort((a, b) => a.displayName > b.displayName ? 1 : -1);
   return (
     <>
 	<header>
