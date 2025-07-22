@@ -9,7 +9,7 @@ const Home = () => {
   const [lang, setLang] = useState("en");
     const [channel, setChannel] = useState("all");
 	  const [apiVer, setApiVer] = useState("latest");
-  const [url, setUrl] = useState(`https://www.nvaccess.org/addonStore/${lang}/${channel}/${apiVer}.json`);
+  const [url, setUrl] = useState(`https://addonstore.nvaccess.org/${lang}/${channel}/${apiVer}.json`);
   const handleLangChange = (event) => {
     setLang(event.target.value);
   }
