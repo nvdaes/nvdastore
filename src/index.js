@@ -60,6 +60,7 @@ const Home = () => {
 		  		  <ul>
 		  <li>ID: {item.addonId}</li>
 		  <li>version: {item.addonVersionName}</li>
+      <li>Minimum NVDA version: {item.minNVDAVersion.major}</li>
 		<li>channel: {item.channel}</li>
 		<li>publisher: @{item.publisher}</li>
 		<li>SHA-256: {item.sha256}</li>
