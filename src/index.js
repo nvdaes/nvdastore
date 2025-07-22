@@ -51,7 +51,7 @@ const Home = () => {
 	  </header>
 	  <main>
         <h1 aria-live="polite" aria-atomic="true">Available add-ons: {url}</h1>
-        {data.sort(function(a, b){return b.displayName - a.displayName}) &&
+        {data &&
         data.map((item, index) => {
           return (
 		  <>
