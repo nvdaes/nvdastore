@@ -25,6 +25,7 @@ const Home = () => {
   }
 
   const [data] = useFetch([url]);
+  const sortedData = [...data].sort((a, b) => a.displayName - b.displayName);
   return (
     <>
 	<header>
@@ -51,8 +52,8 @@ const Home = () => {
 	  </header>
 	  <main>
         <h1 aria-live="polite" aria-atomic="true">Available add-ons: {url}</h1>
-        {data &&
-        data.map((item, index) => {
+        {sortedData &&
+        sortedData.map((item, index) => {
           return (
 		  <>
 		  <h2 key={index}><a href={item.URL}>{item.displayName} {item.addonVersionName}</a></h2>
