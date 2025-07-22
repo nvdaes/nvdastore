@@ -21,7 +21,7 @@ const Home = () => {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
-		    setUrl(`https://www.nvaccess.org/addonStore/${lang}/${channel}/${apiVer}.json`);
+		    setUrl(`https://addonstore.nvaccess.org/addonStore/${lang}/${channel}/${apiVer}.json`);
   }
 
   const [data] = useFetch([url]);
