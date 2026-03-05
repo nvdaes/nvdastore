@@ -28,6 +28,9 @@ const Home = () => {
   return (
     <>
 	<header>
+    <p>Important: This website is not maintained and may contain outdated information.</p>
+    <p>Its purpose is to provide a simple interface to browse NVDA add-ons which may be available in the store, but this is not endorsed by NV Access and may not reflect the latest information.</p>
+    <p>For the latest information, please refer to the official NV Access resources at <a href="https://addonstore.nvaccess.org" target="_blank" rel="noopener noreferrer">https://addonstore.nvaccess.org</a>.</p>
 	<p>Addons available on the <a href="https://github.com/nvaccess/addon-datastore"target="_blank" rel="noopener noreferrer">NV Access add-on datastore repository</a> (external)</p>
       <form onSubmit={handleSubmit}>
 	  <label>Language
